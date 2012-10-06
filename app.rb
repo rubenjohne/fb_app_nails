@@ -7,8 +7,8 @@ require "dm-timestamps"
 require "dm-migrations"
 
 enable :sessions
-set :raise_errors, false
-set :show_exceptions, false
+set :raise_errors, true
+set :show_exceptions, true
 
 # Scope defines what permissions that we are asking the user to grant.
 # In this example, we are asking for the ability to publish stories
