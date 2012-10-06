@@ -1,5 +1,11 @@
 require "sinatra"
 require 'koala'
+require 'httparty'
+require 'ruby-debug'
+require 'base64'
+require 'openssl'
+require 'crack/json'
+
 
 enable :sessions
 set :raise_errors, true
@@ -20,13 +26,30 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
 end
 
 
+helpers do
+  def base64_url_decode str
+    encoded_str = str.gsub('-','+').gsub('_','/')
+    encoded_str += '=' while !(encoded_str.size % 4).zero?
+    Base64.decode64(encoded_str)
+  end
+
+  def decode_data(signed_request)
+    encoded_sig, payload = signed_request.split('.')
+    data = base64_url_decode(payload)
+  end
+end
+
+
 get "/" do
 
-  # check if user liked the page first
-  oauth = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"])
-  @signed_request = oauth.parse_signed_request(params["signed_request"])
-
-  erb :index
+  @encoded_request = params[:signed_request]
+  @json_request = decode_data(@encoded_request)
+  @signed_request = Crack::JSON.parse(@json_request)
+  if @signed_request['page']['liked']
+    erb :unlocked
+  else
+    erb :locked
+  end
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET
