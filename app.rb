@@ -47,6 +47,7 @@ helpers do
     @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
   end
 
+
 end
 
 # the facebook session expired! reset ours and restart the process
@@ -73,7 +74,7 @@ get "/" do
   end
 
   #check if user liked a page
-  @signed_request = params[:signed_request]
+  @signed_request = @authenticator.parse_signed_request(params["signed_request"])
 
   erb :index
 end
