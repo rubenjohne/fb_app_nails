@@ -60,10 +60,6 @@ class Art
   
 end
 
-#Create or upgrade all tables at once
-DataMapper.auto_upgrade!
-
-
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
