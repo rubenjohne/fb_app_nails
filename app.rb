@@ -1,9 +1,6 @@
 require "sinatra"
 require 'koala'
-require 'httparty'
-require 'ruby-debug'
 require 'base64'
-require 'openssl'
 require 'crack/json'
 
 
