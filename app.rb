@@ -1,6 +1,12 @@
 require "sinatra"
 require 'koala'
 
+require "sqlite3"
+require "pg"
+require "dm-core"
+require "dm-timestamps"
+require "dm-migrations"
+
 enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
