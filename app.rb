@@ -1,7 +1,6 @@
 require "sinatra"
 require 'koala'
 
-require "sqlite3"
 require "pg"
 require "dm-core"
 require "dm-timestamps"
