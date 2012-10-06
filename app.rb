@@ -21,9 +21,8 @@ end
 
 
 get "/" do
-
-
-  erb :index
+  # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
+  erb :unlocked
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET
