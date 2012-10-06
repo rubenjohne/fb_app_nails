@@ -60,6 +60,7 @@ class Art
   
 end
 
+DataMapper.auto_upgrade!
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
