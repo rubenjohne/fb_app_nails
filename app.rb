@@ -72,8 +72,9 @@ get "/" do
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
 
-  # check people who liked the page
-  @page = @graph
+  #check if user liked a page
+  @signed_request = params[:signed_request]
+
   erb :index
 end
 
