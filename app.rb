@@ -74,7 +74,7 @@ get "/" do
   end
 
   #check if user liked a page
-  @signed_request = @authenticator.parse_signed_request(params["signed_request"])
+  @signed_request = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"]).parse_signed_request(params["signed_request"])
 
   erb :index
 end
