@@ -21,6 +21,11 @@ end
 
 
 get "/" do
+
+  # check if user liked the page first
+  oauth = Koala::Facebook::OAuth.new(APP_ID, APP_CODE)
+ @signed_request = oauth.parse_signed_request(params[:signed_request])
+
   erb :index
 end
 
