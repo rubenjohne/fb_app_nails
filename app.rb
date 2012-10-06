@@ -21,7 +21,7 @@ end
 
 
 get "/" do
-
+  erb :index
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET
