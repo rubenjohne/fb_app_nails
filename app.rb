@@ -24,6 +24,46 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
+configure do 
+  # Use Heroku database
+  DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+
+
+class Art 
+  
+  include DataMapper::Resource
+  
+  
+  property :id,             Serial
+  property :blogger,        Integer
+  property :title,          String
+  property :description,    String
+  property :name,           String
+  property :blog_name,      String
+  property :blog_url,       String
+  property :filename,       String
+  property :url,            String
+  property :created_at,     DateTime
+  property :updated_at,     DateTime
+  property :size,           Integer
+  property :content_type,   String
+  
+  def handle_upload(file)
+    self.content_type = file[:type]
+    self.size = File.size(file[:tempfile])
+    path = File.join(Dir.pwd, "/public/arts", self.filename)
+    File.open(path, "wb") do |f|
+      f.write(file[:tempfile].read)
+    end
+  end
+  
+end
+
+#Create or upgrade all tables at once
+DataMapper.auto_upgrade!
+
+
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
