@@ -24,6 +24,28 @@ end
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
+class Art
+  
+  include DataMapper::Resource
+  
+  property  :id,              Serial
+  property  :blog_id,         Integer
+  property  :blog,            String
+  property  :blogger,         String
+  property  :title,           String
+  property  :description,     Text
+  property  :blog_url,        String
+  property  :filename,        String
+  property  :url,             String
+  property  :created_at,      DateTime
+  property  :updated_at,      DateTime
+  property  :size,            Integer
+  property  :content_type,    String
+  
+end
+
+DataMapper.auto_upgrade!
+
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
   erb :unlocked
