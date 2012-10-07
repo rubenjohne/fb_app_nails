@@ -1,18 +1,11 @@
 require "sinatra"
 require 'koala'
+require "pg"
 
 
 require "dm-core"
 require "dm-timestamps"
 require "dm-migrations"
-
-configure :development do
-  require "sqlite3"
-end
-
-configure :production do
-  require "pg"
-end
 
 enable :sessions
 set :raise_errors, true
