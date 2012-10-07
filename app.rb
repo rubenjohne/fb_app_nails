@@ -47,7 +47,7 @@ end
 
 DataMapper.finalize
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 
 # set utf-8 for outgoing
@@ -93,7 +93,7 @@ end
 get '/delete/:id' do
   art = Art.get(params[:id])
   unless art.nil?
-    art.delete
+    art.destroy
   end
   redirect('/list')
 end
