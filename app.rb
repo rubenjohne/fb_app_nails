@@ -52,6 +52,7 @@ class Vote
   
   property :id,               Serial
   property :voted_by,         String, :required => false
+  property :ip_address,       String  
   property :created_at,       DateTime 
   
   belongs_to :art
