@@ -9,4 +9,4 @@ gem "pg"
 gem "dm-core"
 gem "dm-timestamps"
 gem "dm-migrations"
-
+gem "datamapper"
