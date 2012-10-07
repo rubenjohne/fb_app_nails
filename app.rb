@@ -26,27 +26,6 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
 end
 
 DataMapper.setup(:default, 'postgres://clldrlhbvlyhff:hEsSysSlr0J_2iAWaIS4tBElko@ec2-54-243-250-109.compute-1.amazonaws.com:5432/d40rbirnl0gui5')
-class Art
-  
-  include DataMapper::Resource
-  
-  property  :id,              Serial
-  property  :blog_id,         Integer
-  property  :blog,            String
-  property  :blogger,         String
-  property  :title,           String
-  property  :description,     Text
-  property  :blog_url,        String
-  property  :filename,        String
-  property  :url,             String
-  property  :created_at,      DateTime
-  property  :updated_at,      DateTime
-  property  :size,            Integer
-  property  :content_type,    String
-  
-end
-
-DataMapper.auto_upgrade!
 
 
 get "/" do
