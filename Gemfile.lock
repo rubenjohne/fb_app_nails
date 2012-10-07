@@ -78,9 +78,6 @@ PLATFORMS
 
 DEPENDENCIES
   data_mapper
-  dm-core
-  dm-migrations
-  dm-timestamps
   httparty
   json
   koala
