@@ -2,9 +2,6 @@ require "sinatra"
 require 'koala'
 require "pg"
 
-require "dm-core"
-require "dm-timestamps"
-require "dm-migrations"
 require "data_mapper"
 
 enable :sessions
