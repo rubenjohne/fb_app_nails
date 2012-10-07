@@ -86,7 +86,7 @@ post '/create' do
   @art.content_type = params[:image][:type]
   @art.size = File.size(params[:image][:tempfile])
   if @art.save
-    path = File.join(Dir.pwd, "/public/arts", @art.filename)
+    path = File.join("public/arts", @art.filename)
     File.open(path, "wb") do |f|
       f.write(params[:image][:tempfile].read)
     end
