@@ -83,8 +83,8 @@ end
 
 post '/create' do
   @art = Art.new(params[:art])
-  @art.content_type = params[:image][:type]
-  @art.size = File.size(params[:image][:tempfile])
+  #@art.content_type = params[:image][:type]
+  #@art.size = File.size(params[:image][:tempfile])
   if @art.save
     #path = File.join("public/arts", @art.filename)
     #File.open(path, "wb") do |f|
