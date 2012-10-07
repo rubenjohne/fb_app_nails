@@ -50,7 +50,7 @@ class Vote
   
   include DataMapper:Resource
   
-  property :id,               Serial,
+  property :id,               Serial
   property :voted_by,         String, :required => false
   property :created_at,       DateTime 
   
