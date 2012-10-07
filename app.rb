@@ -71,7 +71,9 @@ get '/art' do
 end
 
 get '/list' do
-  
+  @title = "List Arts"
+  @arts = Art.all(:order => [:created_at.desc])
+  erb :list
 end
 
 get '/new' do
@@ -80,7 +82,18 @@ get '/new' do
 end
 
 post '/create' do
-  
+  @art = Art.new(params[:art])
+  @art.content_type = params[:image][:type]
+  @art.size = File.size(params[:image][:tempfile])
+  if @art.save
+    path = File.join(Dir.pwd, "/public/arts", @art.filename)
+    File.open(path, "wb") do |f|
+      f.write(params[:image][:tempfile].read)
+    end
+    redirect "/show/#{@ad.id}"
+  else
+    redirect('/list')  
+  end
 end
 
 get '/delete/:id' do
@@ -88,7 +101,12 @@ get '/delete/:id' do
 end
 
 get '/show/:id' do
-  
+  @art = Art.get(params[:id])
+  if @art
+    erb :show
+  else
+    redirect('/list')
+  end  
 end
 
 get '/votes/:id' do

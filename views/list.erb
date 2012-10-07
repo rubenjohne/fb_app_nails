@@ -1,0 +1,9 @@
+<h3>Nail Art List</h3>
+
+<table border="0" cellpartding="0" cellspacing="10" class="list">
+<% @arts.each_with_index do |art,i| %>
+	<tr<%= ' class="alt"' if i%2==0 %>>
+	  <td><a href="/show/<%= art.id %>"><%= art.title %></a></td>
+		<td><a href="/delete/<%= art.id %>">delete</a></td>
+<% end %>
+</table>
