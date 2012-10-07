@@ -43,11 +43,24 @@ class Art
   property  :size,            Integer,  :required => false
   property  :content_type,    String,  :required => false
   
+  has n, :votes
+end
+
+class Vote
+  
+  include DataMapper:Resource
+  
+  property :id,               Serial,
+  property :voted_by,         String, :required => false
+  property :created_at,       DateTime 
+  
+  belongs_to :art
+  
 end
 
 DataMapper.finalize
 
-DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
 
 
 # set utf-8 for outgoing
