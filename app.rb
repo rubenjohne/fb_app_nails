@@ -22,7 +22,9 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
+# database connection from heroku
 DataMapper.setup(:default, ENV["DATABASE_URL"])
+
 class Art
   
   include DataMapper::Resource
@@ -48,6 +50,10 @@ DataMapper.finalize
 DataMapper.auto_migrate!
 
 
+# set utf-8 for outgoing
+before do 
+  headers "Content-Type" => "text/html; charset=utf-8"
+end
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
@@ -59,3 +65,30 @@ post "/" do
   redirect "/"
 end
 
+
+get '/art' do
+
+end
+
+get '/list' do
+  
+end
+
+get '/new' do
+  @title = "Create a new Nail Art"
+  erb :new
+end
+
+post '/create' do
+  
+end
+
+get '/delete/:id' do
+  
+end
+
+get '/show/:id' do
+  
+end
+
+get '/votes/:id'
