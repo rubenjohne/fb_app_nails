@@ -25,8 +25,7 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
-DataMapper::setup(:default, ENV['DATABASE_URL'] )
-
+DataMapper.setup(:default, 'postgres://clldrlhbvlyhff:hEsSysSlr0J_2iAWaIS4tBElko@ec2-54-243-250-109.compute-1.amazonaws.com:5432/d40rbirnl0gui5')
 class Art
   
   include DataMapper::Resource
