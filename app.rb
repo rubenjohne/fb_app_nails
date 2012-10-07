@@ -91,6 +91,6 @@ get '/show/:id' do
   
 end
 
-get '/votes/:id'
+get '/votes/:id' do
 
 end
