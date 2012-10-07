@@ -25,7 +25,7 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/adserver.db")
+DataMapper::setup(:default, ENV['DATABASE_URL'] )
 
 class Art
   
