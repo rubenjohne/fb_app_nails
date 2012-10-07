@@ -48,7 +48,7 @@ end
 
 class Vote
   
-  include DataMapper:Resource
+  include DataMapper::Resource
   
   property :id,               Serial
   property :voted_by,         String, :required => false
