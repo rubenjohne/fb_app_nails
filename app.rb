@@ -45,7 +45,9 @@ end
 
 DataMapper.finalize
 
-DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
+
+
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
