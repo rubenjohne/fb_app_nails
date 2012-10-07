@@ -92,3 +92,5 @@ get '/show/:id' do
 end
 
 get '/votes/:id'
+
+end
