@@ -30,18 +30,18 @@ class Art
   include DataMapper::Resource
   
   property  :id,              Serial
-  property  :blog_id,         Integer
-  property  :blog,            String
-  property  :blogger,         String
-  property  :title,           String
-  property  :description,     Text
-  property  :blog_url,        String
-  property  :filename,        String
-  property  :url,             String
-  property  :created_at,      DateTime
-  property  :updated_at,      DateTime
-  property  :size,            Integer
-  property  :content_type,    String
+  property  :blog_id,         Integer,  :required => false
+  property  :blog,            String,  :required => false
+  property  :blogger,         String,  :required => false
+  property  :title,           String,  :required => false
+  property  :description,     Text,  :required => false
+  property  :blog_url,        String,  :required => false
+  property  :filename,        String,  :required => false
+  property  :url,             String,  :required => false
+  property  :created_at,      DateTime,  :required => false
+  property  :updated_at,      DateTime,  :required => false
+  property  :size,            Integer,  :required => false
+  property  :content_type,    String,  :required => false
   
 end
 
