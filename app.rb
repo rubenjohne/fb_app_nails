@@ -5,7 +5,7 @@ require "pg"
 require "dm-core"
 require "dm-timestamps"
 require "dm-migrations"
-require "datamapper"
+require "data_mapper"
 
 enable :sessions
 set :raise_errors, true
