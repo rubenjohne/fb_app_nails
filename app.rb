@@ -90,7 +90,7 @@ post '/create' do
     File.open(path, "wb") do |f|
       f.write(params[:image][:tempfile].read)
     end
-    redirect "/show/#{@ad.id}"
+    redirect "/show/#{@art.id}"
   else
     redirect('/list')  
   end
