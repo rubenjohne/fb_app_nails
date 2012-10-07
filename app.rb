@@ -1,10 +1,18 @@
 require "sinatra"
 require 'koala'
 
-require "pg"
+
 require "dm-core"
 require "dm-timestamps"
 require "dm-migrations"
+
+configure :development do
+  require "sqlite3"
+end
+
+configure :production do
+  require "pg"
+end
 
 enable :sessions
 set :raise_errors, true
@@ -23,6 +31,30 @@ FACEBOOK_SCOPE = ''
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
+
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/adserver.db")
+
+class Art
+  
+  include DataMapper::Resource
+  
+  property  :id,              Serial
+  property  :blog_id,         Integer
+  property  :blog,            String
+  property  :blogger,         String
+  property  :title,           String
+  property  :description,     Text
+  property  :blog_url,        String
+  property  :filename,        String
+  property  :url,             String
+  property  :created_at,      DateTime
+  property  :updated_at,      DateTime
+  property  :size,            Integer
+  property  :content_type,    String
+  
+end
+
+DataMapper.auto_upgrade!
 
 
 get "/" do
