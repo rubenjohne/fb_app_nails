@@ -1,6 +1,7 @@
 require "sinatra"
 require 'koala'
 require "pg"
+require 'dm-postgres-adapter'
 
 
 require "dm-core"
