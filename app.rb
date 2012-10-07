@@ -43,6 +43,8 @@ class Art
   
 end
 
+DataMapper.finalize
+
 DataMapper.auto_upgrade!
 
 get "/" do
