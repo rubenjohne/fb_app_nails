@@ -4,7 +4,7 @@ require "pg"
 
 require "data_mapper"
 
-#require "lib/authorization"
+require "app/lib/authorization"
 
 enable :sessions
 set :raise_errors, true
@@ -67,7 +67,7 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 
 helpers do
-  #include Sinatra::Authrorization 
+  include Sinatra::Authrorization 
 end
 
 # set utf-8 for outgoing
