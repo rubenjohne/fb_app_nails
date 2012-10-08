@@ -61,7 +61,7 @@ end
 
 DataMapper.finalize
 
-DataMapper.auto_migrate!
+DataMapper.auto_update!
 
 
 # set utf-8 for outgoing
@@ -71,6 +71,8 @@ end
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
+  @title = "vote for Nail Art"
+  @arts = Art.all(:order => [:created_at.desc])
   erb :unlocked
 end
 
@@ -121,6 +123,7 @@ get '/show/:id' do
   end  
 end
 
-get '/votes/:id' do
-
+get '/vote/:id' do
+  art = Art.get(params[:id])
+  art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => "Ruben")
 end
