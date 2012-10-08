@@ -64,6 +64,7 @@ a:hover, a:active {
 
 #nails {
 	width: 800px;
+	margin:10px 0;
 }
 
 #nails ul {
@@ -74,7 +75,8 @@ a:hover, a:active {
 	float: left;
 	width: 246px;
 	height: 246px;
-	margin: 15px;
+	margin: 7px;
+	overflow: hidden;
 }
 
 /* ------------------------------------------ */
