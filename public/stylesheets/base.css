@@ -13,11 +13,42 @@ body {
 
 header {
  background-image: url('/assets/header.jpg');	 
+ height: 382px;
+ width: 800px;
+}
+
+nav {
+	width:800px;
+}
+
+nav #left_nav {
+	float: left;
+}
+
+nav #right_nav {
+	float: right;
 }
 
 
+a:link, a:visited {
+	color: #41c7bb;
+}
 
+a:hover, a:active {
+	color: #059285;
+}
 
+.button-link:link, .button-link:visited {
+	color: #059285;
+	background-color: #fff;
+	border: 1px solid #059285;	
+}
+
+.button-link:hover, .button-link:active {
+	color: #fff;
+	background-color: #417cbb;
+	border: 1px solid #059285;
+}
 
 
 
