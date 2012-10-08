@@ -10,6 +10,7 @@ body {
   font: 12px/1.5em Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   width: 800px;
+  overflow: hidden;
 }
 
 header {
@@ -55,8 +56,8 @@ a:hover, a:active {
 
 .button-link:hover, .button-link:active {
 	color: #fff;
-	background-color: #417cbb;
-	border: 1px solid #059285;
+	background-color: #33cccc;
+	border: 1px solid #006666;
 }
 
 
