@@ -71,7 +71,7 @@ end
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
-  @title = "vote for Nail Art"
+  @title = "Vote for Nail Art"
   @arts = Art.all(:order => [:created_at.desc])
   erb :unlocked
 end

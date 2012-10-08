@@ -4,4 +4,5 @@
 	<img src="/arts/<%= art.filename %>" />
 	<p><%= art.title %></p>
 	<a href="/vote/<%= art.id %>">VOTE</a>
+	<b>Total Votes :</b><p><%= art.votes.count %></p>
 <% end %>	
