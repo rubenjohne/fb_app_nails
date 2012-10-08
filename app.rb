@@ -77,7 +77,6 @@ end
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
-  @directory = Dir.pwd
   @title = "Vote for Nail Art"
   @arts = Art.all(:order => [:created_at.desc])
   erb :unlocked

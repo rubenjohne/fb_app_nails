@@ -2,8 +2,6 @@
 
 <h3><%= @message unless @message.nil?%></h3>
 
-<h2><%= @directory %></h2>
-
 <% @arts.each_with_index do |art,i| %>
 	<img src="/arts/<%= art.filename %>" />
 	<p><%= art.title %></p>
