@@ -4,7 +4,7 @@ require "pg"
 
 require "data_mapper"
 
-require "lib/authorization"
+#require "lib/authorization"
 
 enable :sessions
 set :raise_errors, true
@@ -77,6 +77,7 @@ end
 
 get "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
+  @directory = Dir.pwd
   @title = "Vote for Nail Art"
   @arts = Art.all(:order => [:created_at.desc])
   erb :unlocked
