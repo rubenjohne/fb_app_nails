@@ -4,6 +4,8 @@ require "pg"
 
 require "data_mapper"
 
+require "lib/authorization"
+
 enable :sessions
 set :raise_errors, true
 set :show_exceptions, true
@@ -61,8 +63,12 @@ end
 
 DataMapper.finalize
 
+# Create or upgrade the database all at once
 DataMapper.auto_upgrade!
 
+helpers do
+  include Sinatra::Authrorization 
+end
 
 # set utf-8 for outgoing
 before do 
@@ -81,23 +87,21 @@ post "/" do
   redirect "/"
 end
 
-
-get '/art' do
-
-end
-
 get '/list' do
+  require_admin
   @title = "List Arts"
   @arts = Art.all(:order => [:created_at.desc])
   erb :list
 end
 
 get '/new' do
+  require_admin
   @title = "Create a new Nail Art"
   erb :new
 end
 
 post '/create' do
+  require_admin
   @art = Art.new(params[:art])
   if @art.save
     redirect "/show/#{@art.id}"
@@ -107,6 +111,7 @@ post '/create' do
 end
 
 get '/edit/:id' do
+  require_admin
   @art = Art.get(params[:id])
   if @art
     erb :edit
@@ -116,6 +121,7 @@ get '/edit/:id' do
 end
 
 post '/update' do
+  require_admin
   @art = Art.get(params[:id])
   if @art.update(params[:art])
     redirect "/show/#{@art.id}"
@@ -125,6 +131,7 @@ post '/update' do
 end
 
 get '/delete/:id' do
+  require_admin
   art = Art.get(params[:id])
   unless art.nil?
     art.destroy
@@ -133,6 +140,7 @@ get '/delete/:id' do
 end
 
 get '/show/:id' do
+  require_admin
   @art = Art.get(params[:id])
   if @art
     erb :show
