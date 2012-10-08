@@ -6,11 +6,9 @@
 /* =global elements
 --------------------------------------------- */
 body {
-  color: #999;
-  font: 14px/1.5em "Lucida Grande", Arial, sans-serif;
+  color: #fff;
+  font: 12px/1.5em Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  width: 720px;
-  margin: 20px;
 }
 
 a:link, a:visited {
