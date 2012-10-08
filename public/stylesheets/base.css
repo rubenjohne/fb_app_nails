@@ -29,6 +29,7 @@ nav #left_nav {
 
 nav #right_nav {
 	float: right;
+	margin-right: 10px;
 }
 
 a {
@@ -61,8 +62,20 @@ a:hover, a:active {
 }
 
 
+#nails {
+	width: 800px;
+}
 
+#nails ul {
+	width: 800px;
+}
 
+#nails ul li {
+	float: left;
+	width: 246px;
+	height: 246px;
+	margin: 15px;
+}
 
 /* ------------------------------------------ */
 

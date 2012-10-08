@@ -16,10 +16,31 @@
 
 <h3><%= @message unless @message.nil?%></h3>
 
+<section id="nails">
 <% @arts.each_with_index do |art,i| %>
-	<img src="/arts/<%= art.filename %>" />
-	<p><%= art.title %></p>
-	<a href="/vote/<%= art.id %>">VOTE</a><br/>
-	<span class="label">Total Votes :</span><span><%= art.votes.count %></span>
-	<br/>
-<% end %>	
+	<% trueIndex = index + 1 %>
+
+	<% if trueIndex == 1 %>
+		<ul>
+			<li>
+				<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
+			</li>	
+	<% elsif trueIndex == @arts.size %>		
+			<li>
+				<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
+			</li>	
+		</ul>	
+	<% elsif (trueIndex % 3) == 0 %>	
+			<li>
+				<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
+			</li>	
+		</ul>	
+		<ul>
+	<% else %>		
+			<li>
+				<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
+			</li>	
+	<% end %>		
+<% end %>
+</section>
+			
