@@ -61,7 +61,7 @@ end
 
 DataMapper.finalize
 
-DataMapper.auto_update!
+DataMapper.auto_upgrade!
 
 
 # set utf-8 for outgoing
