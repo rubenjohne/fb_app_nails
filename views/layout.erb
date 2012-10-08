@@ -11,10 +11,12 @@
     <!--[if IEMobile]>
     <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
     <![endif]-->
+
+<% if authorized? %>
 	<nav>
 		<a href="/list">List</a> | <a href="/new">New</a>
 	</nav>	
-
+<% end %>
     <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
 
  </head>
