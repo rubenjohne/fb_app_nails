@@ -6,5 +6,5 @@
 	<img src="/arts/<%= art.filename %>" />
 	<p><%= art.title %></p>
 	<a href="/vote/<%= art.id %>">VOTE</a><br/>
-	<b>Total Votes :</b><p><%= art.votes.count %></p>
+	<span class="label">Total Votes :</span><span><%= art.votes.count %></span>
 <% end %>	
