@@ -1,8 +1,10 @@
 <h1><%= @title %></h1>
 
+<h3><%= @message unless @message.nil?%></h3>
+
 <% @arts.each_with_index do |art,i| %>
 	<img src="/arts/<%= art.filename %>" />
 	<p><%= art.title %></p>
-	<a href="/vote/<%= art.id %>">VOTE</a>
+	<a href="/vote/<%= art.id %>">VOTE</a><br/>
 	<b>Total Votes :</b><p><%= art.votes.count %></p>
 <% end %>	
