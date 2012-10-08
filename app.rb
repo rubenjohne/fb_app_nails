@@ -4,7 +4,7 @@ require "pg"
 
 require "data_mapper"
 
-require "app/lib/authorization"
+require "./lib/authorization"
 
 enable :sessions
 set :raise_errors, true
