@@ -156,5 +156,5 @@ get '/vote/:id' do
   art = Art.get(params[:id])
   art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => "Ruben")
   @message ="Thanks for voting #{params[:voted_by]}" unless params[:voted_by].nil?  
-  redirect('/')
+  erb :unlocked 
 end
