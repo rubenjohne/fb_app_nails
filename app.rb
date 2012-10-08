@@ -106,6 +106,24 @@ post '/create' do
   end
 end
 
+get '/edit/:id' do
+  @art = Art.get(params[:id])
+  if @art
+    erb :edit
+  else
+    redirect('/list')
+  end  
+end
+
+post '/update' do
+  @art = Art.get(params[:id])
+  if @art.update(params[:art])
+    redirect "/show/#{@art.id}"
+  else 
+    redirect('/list')
+  end  
+end
+
 get '/delete/:id' do
   art = Art.get(params[:id])
   unless art.nil?

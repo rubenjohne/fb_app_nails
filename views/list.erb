@@ -5,7 +5,8 @@
 	<tr<%= ' class="alt"' if i%2==0 %>>
 	  <td><img src="/arts/<%= art.filename %>" /></td>
 	  <td><a href="/show/<%= art.id %>"><%= art.title %></a></td>
-		<td><a href="/delete/<%= art.id %>">delete</a></td>
+	  <td><a href="/edit/<%= art.id %>">edit></a></td>
+	  <td><a href="/delete/<%= art.id %>">delete</a></td>
 	</tr>	
 <% end %>
 </table>

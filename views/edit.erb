@@ -1,0 +1,39 @@
+<h3>Edit Nail Art</h3>
+
+<form	action="/update" method="post" id="art" enctype="multipart/form-data">
+	<p>
+		<label>Blog ID:</label><br />
+		<input type="text" name="art[blog_id]" id="blog_id" value="<%= @art.blog_id %>" />	
+	</p>
+	<p>
+		<label>Blog:</label><br />
+		<input type="text" name="art[blog]" id="blog" value="<%= @art.blog %>"/>
+	</p>
+	<p>
+		<label>Blogger:</label><br />
+		<input type="text" name="art[blogger]" id="blogger" value="<%= @art.blogger %>"/>
+	</p>
+	<p>
+		<label>Title:</label><br />
+		<input type="text" name="art[title]" id="title" value="<%= @art.title %>"/>
+	</p>
+	<p>
+		<label>Description:</label><br />
+		<input type="text" name="art[description]" id="description" value="<%= @art.description %>"/>
+	</p>
+	<p>
+		<label>Blog URL:</label><br />
+		<input type="text" name="art[blog_url]" id="blog_url" value="<%= @art.blog_url %>"/>
+	</p>
+	<p>
+		<label>Filename:</label><br />
+		<input type="text" name="art[filename]" id="filename" value="<%= @art.filename %>"/>
+	</p>
+	<p>
+		<label>URL:</label><br />
+		<input type="text" name="art[url]" id="url" value="<%= @art.url %>"/>
+	</p>
+	<p>
+		<input type="submit">
+	</p>
+</form>
