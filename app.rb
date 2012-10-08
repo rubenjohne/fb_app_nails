@@ -67,7 +67,7 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 
 helpers do
-  include Sinatra::Authrorization 
+  include Sinatra::Authorization 
 end
 
 # set utf-8 for outgoing
