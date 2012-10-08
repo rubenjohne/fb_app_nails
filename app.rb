@@ -75,16 +75,19 @@ before do
   headers "Content-Type" => "text/html; charset=utf-8"
 end
 
-get "/" do
+post "/" do
   # will add  a function later to check if the user liked the page then redirect to unlocked or locked page
   @title = "Vote for Nail Art"
-  @arts = Art.all(:order => [:created_at.desc])
-  erb :unlocked
-end
-
-# used by Canvas apps - redirect the POST to be a regular GET
-post "/" do
-  redirect "/"
+  signed_request = params[:signed_request]
+  oauth = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"])
+  @signed_request = oauth.parse_signed_request(signed_request)
+  liked_page = @signed_request['page']['liked']
+  if liked_page
+    @arts = Art.all(:order => [:created_at.desc])
+    erb :unlocked
+  else
+    erb :locked 
+  end  
 end
 
 get '/list' do
