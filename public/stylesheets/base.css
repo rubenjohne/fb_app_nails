@@ -108,14 +108,23 @@ td {
 
 #vote {
 	text-align: center;
+	margin-top: 20px;
 }
 
 #vote .title {
 	font-size: 31px;
 }
 
+#vote img {
+	margin: 20px 0;
+}
+
 #vote .description {
 	font-size: 18px;
+}
+
+#vote form {
+	margin: 15px 0;
 }
 
 /* ------------------------------------------ */
