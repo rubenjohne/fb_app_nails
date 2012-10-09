@@ -50,13 +50,11 @@ a:hover, a:active {
 
 .button-link {
 	padding: 10px;
-}
-
-.button-link:link, .button-link:visited {
 	color: #059285;
 	background-color: #fff;
 	border: 1px solid #059285;	
 }
+
 
 .button-link:hover, .button-link:active {
 	color: #fff;
