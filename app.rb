@@ -172,7 +172,7 @@ end
 post '/vote' do
   art = Art.get(params[:id])
   # check if the user voted already
-  vote = Vote.last(:voted_by => settings.user_name)
+  vote = Vote.last(:ip_address => env["HTTP_X_REAL_IP"])
   unless vote.nil? 
      @diff = DateTime.now.day - vote.created_at.day 
      if @diff != 0 
