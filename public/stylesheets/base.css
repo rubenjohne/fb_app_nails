@@ -81,6 +81,19 @@ a:hover, a:active {
 	overflow: hidden;
 }
 
+table {
+	
+}
+
+tr {
+	border: 1px solid #000;
+}
+
+td {
+	text-align: center;
+	padding: 5px;
+}
+
 /* ------------------------------------------ */
 
 /* =clearfix
