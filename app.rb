@@ -87,7 +87,9 @@ post "/" do
   @signed_request = oauth.parse_signed_request(signed_request)
   @graph = Koala::Facebook::API.new
   @user = @graph.get_object(@signed_request["user_id"])  
-  unless @user.nil? set :user_name, @user['username'] end
+  unless @user.nil? 
+    set :user_name, @user['username'] 
+  end
   liked_page = @signed_request['page']['liked']
   if liked_page
     @arts = Art.all(:order => [:blog_id.asc])
