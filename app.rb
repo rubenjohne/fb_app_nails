@@ -160,7 +160,7 @@ get '/vote/:id' do
   @signed_request = oauth.parse_signed_request(signed_request)  
   @graph = Koala::Facebook::API.new
   @user = @graph.get_object(@signed_request['user_id'])
-  art.votes.create(:ip_address => env["REMOTE_ADDR"], unless @user.nil? :voted_by => @user['username'])
+  art.votes.create(:ip_address => env["REMOTE_ADDR"], unless @user.nil? :voted_by => @user['username'] end)
   @message ="Thanks for voting #{params[:voted_by]}" unless params[:voted_by].nil?  
   @arts = Art.all(:order => [:created_at.desc])
   erb :unlocked
