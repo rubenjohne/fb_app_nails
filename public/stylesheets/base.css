@@ -27,6 +27,7 @@ nav {
 
 nav #left_nav {
 	float: left;
+	margin-left: 10px;
 }
 
 nav #right_nav {
@@ -94,6 +95,13 @@ td {
 	padding: 5px;
 	border: 1px solid #000;		
 }
+
+
+#vote {
+	
+}
+
+
 
 /* ------------------------------------------ */
 

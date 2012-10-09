@@ -158,8 +158,13 @@ get '/show/:id' do
 end
 
 get '/vote/:id' do
+  @art = Art.get(params[:id])
+  erb :vote
+end
+
+post '/vote' do
   art = Art.get(params[:id])
   art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
-  @arts = Art.all(:order => [:created_at.desc])
-  erb :unlocked
 end
+
+
