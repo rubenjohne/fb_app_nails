@@ -164,7 +164,11 @@ end
 
 post '/vote' do
   art = Art.get(params[:id])
-  art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
+  if art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
+    erb :voted
+  else
+    erb :novote
+  end    
 end
 
 
