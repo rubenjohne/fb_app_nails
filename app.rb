@@ -172,8 +172,7 @@ post '/vote' do
   # check if the user voted already
   vote = Vote.last(:voted_by => settings.user_name)
   unless vote.nil?
-    diff = Date.today - vote.created_at
-    if diff < 1.day 
+    if vote.created_at > 1.days.ago 
       art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
       erb :voted  
     else
