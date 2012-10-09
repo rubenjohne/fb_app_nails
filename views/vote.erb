@@ -1,9 +1,9 @@
 <section id="vote">
 	
-	<p><%= art.title %></p>
-	<img src="/arts/<%= art.filename %>" />
-	<p><%= art.description %></p>
-	<p><span class="name">- <%= art.description %></span><span class="link"><a href="<%= @art.blog_url %>"><%= @art.blog %></span></p>
+	<p><%= @art.title %></p>
+	<img src="/arts/<%= @art.filename %>" />
+	<p><%= @art.description %></p>
+	<p><span class="name">- <%= @art.blogger %></span><span class="link"><a href="<%= @art.blog_url %>"><%= @art.blog %></span></p>
 		
 	<form action="/vote" method="post" id="vote_form">
 		<input type="hidden" name="id" value="<%= @art.id %>" />
