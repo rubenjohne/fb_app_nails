@@ -68,6 +68,8 @@ DataMapper.auto_upgrade!
 
 helpers do
   include Sinatra::Authorization 
+  
+  def 
 end
 
 # set utf-8 for outgoing
@@ -152,10 +154,13 @@ end
 
 get '/vote/:id' do
   art = Art.get(params[:id])
+  # duplicate code clean this one later!!!
+  signed_request = params[:signed_request]
+  oauth = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"])
+  @signed_request = oauth.parse_signed_request(signed_request)  
   @graph = Koala::Facebook::API.new
-  @user_id = @signed_request['user_id']
-  @user = @graph.get_object(@user_id)
-  art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => "Ruben")
+  @user = @graph.get_object(@signed_request['user_id'])
+  art.votes.create(:ip_address => env["REMOTE_ADDR"], unless @user.nil? :voted_by => @user['username'])
   @message ="Thanks for voting #{params[:voted_by]}" unless params[:voted_by].nil?  
   @arts = Art.all(:order => [:created_at.desc])
   erb :unlocked
