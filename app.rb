@@ -173,7 +173,7 @@ post '/vote' do
   art = Art.get(params[:id])
   # check if the user voted already
   vote = Vote.last(:voted_by => settings.user_name)
-  @diff = DateTime.now - vote.created_at
+  @diff = DateTime.now.day - vote.created_at.day
   erb :novote
 end
 
