@@ -170,7 +170,7 @@ end
 post '/vote' do
   art = Art.get(params[:id])
   # check if the user voted already
-  vote = Vote.last(:username => settings.user_name)
+  vote = Vote.last(:voted_by => settings.user_name)
   unless vote.nil?
     diff = Time.now - vote.created_at
     if diff < 1.day 
