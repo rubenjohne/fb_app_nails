@@ -6,6 +6,8 @@ require "data_mapper"
 
 require "./lib/authorization"
 
+require "date"
+
 enable :sessions
 set :raise_errors, true
 set :show_exceptions, true
@@ -171,17 +173,8 @@ post '/vote' do
   art = Art.get(params[:id])
   # check if the user voted already
   vote = Vote.last(:voted_by => settings.user_name)
-  unless vote.nil?
-    if vote.created_at > 1.days.ago 
-      art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
-      erb :voted  
-    else
-      erb :novote
-    end    
-  else
-    art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
-    erb :voted      
-  end
+  @diff = DateTime.now - vote.created_at
+  erb :novote
 end
 
 
