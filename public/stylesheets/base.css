@@ -53,6 +53,7 @@ a:hover, a:active {
 	color: #fff;
 	background-color: #33cccc;
 	border: 1px solid #006666;
+	cursor: pointer;
 }
 
 .button-submit:hover {
