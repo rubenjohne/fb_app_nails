@@ -78,7 +78,7 @@ before do
 end
 
 configure do
-  set :user_name, nil
+  set :user_name, "dummy"
 end
 
 post "/" do
@@ -87,7 +87,7 @@ post "/" do
   @signed_request = oauth.parse_signed_request(signed_request)
   @graph = Koala::Facebook::API.new
   @user = @graph.get_object(@signed_request["user_id"])  
-  set :user_name, @user['username'] 
+  unless @user.nil? set :user_name, @user['username'] end
   liked_page = @signed_request['page']['liked']
   if liked_page
     @arts = Art.all(:order => [:blog_id.asc])
@@ -176,13 +176,13 @@ post '/vote' do
   unless vote.nil? 
      @diff = DateTime.now.day - vote.created_at.day 
      if @diff != 0 
-       art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
+       art.votes.create(:ip_address => env["HTTP_X_REAL_IP"], :voted_by => settings.user_name)
        erb :voted  
      else
        erb :novote
      end    
    else
-     art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
+     art.votes.create(:ip_address => env["HTTP_X_REAL_IP"], :voted_by => settings.user_name)
      erb :voted      
    end
 end
