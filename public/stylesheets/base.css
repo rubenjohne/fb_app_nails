@@ -48,13 +48,24 @@ a:hover, a:active {
 }
 
 
-.button-link {
+.button-submit {
 	padding: 10px;
+	color: #fff;
+	background-color: #33cccc;
+	border: 1px solid #006666;
+}
+
+.button-submit:hover {
+	color: #059285;
+	background-color: #fff;
+	border: 1px solid #059285;		
+}
+
+.button-link:link, .button-link:visited {
 	color: #059285;
 	background-color: #fff;
 	border: 1px solid #059285;	
 }
-
 
 .button-link:hover, .button-link:active {
 	color: #fff;
@@ -99,7 +110,13 @@ td {
 	text-align: center;
 }
 
+#vote .title {
+	font-size: 31px;
+}
 
+#vote .description {
+	font-size: 18px;
+}
 
 /* ------------------------------------------ */
 
