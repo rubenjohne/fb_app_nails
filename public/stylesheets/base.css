@@ -6,7 +6,8 @@
 /* =global elements
 --------------------------------------------- */
 body {
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   font: 12px/1.5em Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   width: 800px;
