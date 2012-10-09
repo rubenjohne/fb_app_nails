@@ -88,17 +88,22 @@ post "/" do
   set :user_name, @user['username'] 
   liked_page = @signed_request['page']['liked']
   if liked_page
-    @arts = Art.all(:order => [:created_at.desc])
+    @arts = Art.all(:order => [:blog_id.asc])
     erb :unlocked
   else
     erb :locked 
   end  
 end
 
+get "/" do
+  @arts = Art.all(:order => [:blog_id.asc])
+  erb :unlocked  
+end
+
 get '/list' do
   require_admin
   @title = "List Arts"
-  @arts = Art.all(:order => [:created_at.desc])
+  @arts = Art.all(:order => [:blog_id.asc])
   erb :list
 end
 
@@ -164,11 +169,20 @@ end
 
 post '/vote' do
   art = Art.get(params[:id])
-  if art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
-    erb :voted
+  # check if the user voted already
+  vote = Vote.last(:username => settings.user_name)
+  unless vote.nil?
+    diff = Time.now - vote.created_at
+    if diff < 1.day 
+      art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
+      erb :voted  
+    else
+      erb :novote
+    end    
   else
-    erb :novote
-  end    
+    art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
+    erb :voted      
+  end
 end
 
 
