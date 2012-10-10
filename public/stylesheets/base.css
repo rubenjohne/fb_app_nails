@@ -143,6 +143,17 @@ td {
 	text-align: center;
 }
 
+
+#formSubscribe {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+#formSubscribe .input-text {
+	border: 1px solid #000;
+}
+
 #novote {
  background-image: url('/assets/header_sorry.jpg');	 	
 }
