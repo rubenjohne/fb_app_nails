@@ -155,7 +155,9 @@ td {
 }
 
 #novote {
- background-image: url('/assets/header_sorry.jpg');	 	
+ background-image: url('/assets/header_sorry.jpg');	 
+ width: 800px;
+ height: 382px;	
 }
 
 
