@@ -92,6 +92,11 @@ post "/" do
   end
   liked_page = @signed_request['page']['liked']
   if liked_page
+    @graph = Koala::Facebook::API.new
+    unless @signed_request['user_id'].nil?
+      @user_id = @signed_request['user_id']
+      @user = @graph.get_object(@user_id) 
+    end
     @arts = Art.all(:order => [:blog_id.asc])
     erb :unlocked
   else
@@ -174,18 +179,17 @@ end
 post '/vote' do
   art = Art.get(params[:id])
   # check if the user voted already
-  @ip_address = env["HTTP_CLIENT_IP"]
-  vote = Vote.last(:ip_address => env["HTTP_CLIENT_IP"])
+  vote = Vote.last(:ip_address => env["REMOTE_ADDR"])
   unless vote.nil? 
      diff = DateTime.now.day - vote.created_at.day 
      if diff != 0 
-       art.votes.create(:ip_address => env["HTTP_CLIENT_IP"], :voted_by => settings.user_name)
+       art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
        erb :voted  
      else
        erb :novote
      end    
    else
-     art.votes.create(:ip_address => env["HTTP_CLIENT_IP"], :voted_by => settings.user_name)
+     art.votes.create(:ip_address => env['"REMOTE_ADDR"'], :voted_by => settings.user_name)
      erb :voted      
    end
 end
