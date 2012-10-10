@@ -16,8 +16,25 @@
 <h1>HTTP_CLIENT_IP:<%=  env["HTTP_CLIENT_IP"] %><h1>	
 <h1>HTTP_X_FORWARDED_FOR:<%=  env["HTTP_X_FORWARDED_FOR"] %><h1>	
 <h1>REMOTE_ADDR:<%=  env["REMOTE_ADDR"] %><h1>	
-	
-	
+<h1>SERVER_NAME:<%= env['SERVER_NAME'] %>
+<h1>PATH_INFO:<%= env['PATH_INFO'] %>
+<h1>REMOTE_HOST:<%= env['REMOTE_HOST'] %>
+<h1>HTTP_HOST:<%= env['HTTP_HOST'] %>
+<h1>HTTP_USER_AGENT:<%= env['HTTP_USER_AGENT'] %>
+<h1>SERVER_SOFTWARE:<%= env['SERVER_SOFTWARE'] %>
+<h1>HTTP_REFERER:<%= env['HTTP_REFERER'] %>
+<h1>HTTP_COOKIE:<%= env['HTTP_COOKIE'] %>
+<h1>HTTP_ACCEPT_CHARSET:<%= env['HTTP_ACCEPT_CHARSET'] %>
+<h1>REQUEST_URI:<%= env['REQUEST_URI'] %>
+<h1>SERVER_PORT:<%= env['SERVER_PORT'] %>
+<h1>GATEWAY_INTERFACE:<%= env['GATEWAY_INTERFACE'] %>
+<h1>QUERY_STRING:<%= env['QUERY_STRING'] %>
+<h1>REMOTE_USER:<%= env['REMOTE_USER'] %>													
+<h1>HTTP_ACCEPT:<%= env['HTTP_ACCEPT'] %>
+<h1>REQUEST_METHOD:<%= env['REQUEST_METHOD'] %>
+<h1>HTTP_CONNECTION:<%= env['HTTP_CONNECTION'] %>													
+
+
 <section id="nails">
 <% @arts.each_with_index do |art,i| %>
 	<% trueIndex = i + 1 %>
