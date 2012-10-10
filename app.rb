@@ -174,18 +174,18 @@ end
 post '/vote' do
   art = Art.get(params[:id])
   # check if the user voted already
-  @ip_address = ENV['REMOTE_ADDR']
-  vote = Vote.last(:ip_address => ENV['REMOTE_ADDR'])
+  @ip_address = env["HTTP_CLIENT_IP"]
+  vote = Vote.last(:ip_address => env["HTTP_CLIENT_IP"])
   unless vote.nil? 
      diff = DateTime.now.day - vote.created_at.day 
      if diff != 0 
-       art.votes.create(:ip_address => ENV['REMOTE_ADDR'], :voted_by => settings.user_name)
+       art.votes.create(:ip_address => env["HTTP_CLIENT_IP"], :voted_by => settings.user_name)
        erb :voted  
      else
        erb :novote
      end    
    else
-     art.votes.create(:ip_address => ENV['REMOTE_ADDR'], :voted_by => settings.user_name)
+     art.votes.create(:ip_address => env["HTTP_CLIENT_IP"], :voted_by => settings.user_name)
      erb :voted      
    end
 end
