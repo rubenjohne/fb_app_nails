@@ -143,6 +143,11 @@ td {
 	text-align: center;
 }
 
+#novote {
+ background-image: url('/assets/header_sorry.jpg');	 	
+}
+
+
 /* ------------------------------------------ */
 
 /* =clearfix
