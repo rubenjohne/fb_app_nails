@@ -146,8 +146,8 @@ td {
 
 #formSubscribe {
 	position: absolute;
-	bottom: 10px;
-	right: 10px;
+	top: 300px;
+	right: 135px;
 }
 
 #formSubscribe .input-text {
