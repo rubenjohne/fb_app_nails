@@ -176,7 +176,7 @@ post '/vote' do
   # check if the user voted already
   vote = Vote.last(:ip_address => ENV['HTTP_X_FORWARDED_FOR'])
   unless vote.nil? 
-    @ip_address = ENV['HTTP_CLIENT_IP']
+    @ip_address = ENV['HTTP_X_FORWARDED_FOR']
      diff = DateTime.now.day - vote.created_at.day 
      if diff != 0 
        art.votes.create(:ip_address => ENV['HTTP_X_FORWARDED_FOR'], :voted_by => settings.user_name)
