@@ -195,6 +195,10 @@ td {
 #official-rules {
 	text-align: center;
 }
+
+.title {
+	font-size: 14px;
+}
 /* ------------------------------------------ */
 
 /* =clearfix
