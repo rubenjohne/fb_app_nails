@@ -49,7 +49,7 @@ a:hover, a:active {
 
 
 .button-submit {
-	padding: 10px;
+	padding: 5px;
 	color: #fff;
 	background-color: #33cccc;
 	border: 1px solid #006666;
@@ -126,8 +126,9 @@ td {
 }
 
 #vote .description {
-	font-size: 16px;
-	padding: 0 5px;
+	font-size: 14px;
+	padding: 0 55px;
+	margin-bottom: 10px;
 }
 
 #vote form {
