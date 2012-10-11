@@ -118,11 +118,11 @@ td {
 }
 
 #vote .title {
-	font-size: 31px;
+	
 }
 
-#vote img {
-	margin: 20px 0;
+#vote .nail {
+	margin: -6px 20px 0 0;
 }
 
 #vote .description {

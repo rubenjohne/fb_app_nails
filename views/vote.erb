@@ -1,7 +1,7 @@
 
 <nav class="clearfix">
 	<div id="left_nav">
-		<a class="button-link" href="/">RETURN TO ENTRIES</a>
+		<a href="/">RETURN TO ENTRIES</a>
 	</div>	
 	
 </nav>
@@ -11,7 +11,7 @@
 <section id="vote">
 
 	<img class="title" src="/arts/headers/<%= @art.filename %>" />	
-	<img src="/arts/big/<%= @art.filename %>" />
+	<img class="nail" src="/arts/big/<%= @art.filename %>" />
 	<p class="description"><%= @art.description %></p>
 	<p><span class="name">- <%= @art.blogger %>,</span> <span class="link"><a href="<%= @art.blog_url %>" target="_blank"><%= @art.blog %></a></span></p>
 		
