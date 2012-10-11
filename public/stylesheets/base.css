@@ -22,7 +22,6 @@ header {
 
 nav {
 	width:800px;
-	margin-top:20px;
 }
 
 nav #left_nav {
@@ -114,7 +113,7 @@ td {
 
 #vote {
 	text-align: center;
-	margin-top: 20px;
+	margin-top: 5px;
 }
 
 #vote .title {
@@ -122,17 +121,17 @@ td {
 }
 
 #vote .nail {
-	margin: -6px 0 20px 0;
+	margin: -6px 0 5px 0;
 }
 
 #vote .description {
 	font-size: 14px;
 	padding: 0 55px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 #vote form {
-	margin: 15px 0;
+	margin: 8px 0;
 }
 
 
@@ -183,7 +182,8 @@ td {
 #social-buttons {
 	text-align: center;
 	left: 350px;
-	position: absolute;
+	position: relative;
+	width:100px;
 }
 
 .addthis_toolbox {
