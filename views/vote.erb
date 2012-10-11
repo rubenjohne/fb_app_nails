@@ -13,7 +13,7 @@
 	<h1 class="title"><%= @art.title %></h1>
 	<img src="/arts/big/<%= @art.filename %>" />
 	<p class="description"><%= @art.description %></p>
-	<p><span class="name">- <%= @art.blogger %>,</span> <span class="link"><a href="<%= @art.blog_url %>"><%= @art.blog %></span></p>
+	<p><span class="name">- <%= @art.blogger %>,</span> <span class="link"><a href="<%= @art.blog_url %>" target="_blank"><%= @art.blog %></a></span></p>
 		
 	<form action="/vote" method="post" id="vote_form">
 		<input type="hidden" name="id" value="<%= @art.id %>" />
@@ -33,6 +33,6 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
-	<div class="fb-comments" data-href="http://facebook/tadashishoji" data-num-posts="2" 	data-width="470"></div>
+	<div class="fb-comments" data-href="<%= env['REMOTE_HOST']%>" data-num-posts="2" 	data-width="470"></div>
 	
 </section>	

@@ -14,6 +14,13 @@
 </nav>
 -->
 
+<h1><%= env['REMOTE_HOST'] %></h1>
+<h1><%= env['REQUEST_URI'] %></h1>
+<h1><%= env['PATH_INFO'] %></h1>
+<h1><%= env['HTTP_REFERER'] %></h1>
+<h1><%= env['HTTP_HOST'] %></h1>
+<h1><%= env['GATEWAY_INTERFACE'] %></h1>
+
 <section id="nails">
 <% @arts.each_with_index do |art,i| %>
 	<% trueIndex = i + 1 %>

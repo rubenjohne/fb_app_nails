@@ -127,6 +127,7 @@ td {
 
 #vote .description {
 	font-size: 18px;
+	padding: 0 5px;
 }
 
 #vote form {
