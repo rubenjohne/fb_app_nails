@@ -181,11 +181,14 @@ td {
 
 #social-buttons {
 	text-align: center;
+	left: 350px;
+	position: absolute;
 }
 
 .addthis_toolbox {
 	text-align: center;
 	width: 100px;
+	height: 35px;
 }
 /* ------------------------------------------ */
 
