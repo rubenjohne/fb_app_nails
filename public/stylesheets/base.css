@@ -179,6 +179,9 @@ td {
   color: gray;
 }
 
+#social-buttons {
+	text-align: center;
+}
 
 .addthis_toolbox {
 	text-align: center;
