@@ -9,8 +9,8 @@
 
 
 <section id="vote">
-	
-	<h1 class="title"><%= @art.title %></h1>
+
+	<img class="title" src="/arts/headers/<%= @art.filename %>" />	
 	<img src="/arts/big/<%= @art.filename %>" />
 	<p class="description"><%= @art.description %></p>
 	<p><span class="name">- <%= @art.blogger %>,</span> <span class="link"><a href="<%= @art.blog_url %>" target="_blank"><%= @art.blog %></a></span></p>
