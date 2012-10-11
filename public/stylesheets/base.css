@@ -162,7 +162,7 @@ td {
  height: 382px;	
 }
 
-#vote .fbFeedbackContent .postToProfile {
+#facebook-comments div.fbFeedbackContent .postToProfile {
   display: none;
 }
 
