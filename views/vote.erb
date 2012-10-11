@@ -32,9 +32,9 @@
          addthis:title="Tadashi Shoji Nail Art Challenge"
          addthis:description="<%= @art.description %>">
 		<a class="addthis_button_facebook"><img src="/assets/facebook.jpg" width="22" height="22" border="0" alt="Share to Facebook" /></a>
-		<a class="addthis_button_twitter" tw:text="<%= @art.description %>" tw:title="Tadashi Shoji Nail Art Challenge" tw:url="http://www.facebook.com/LOOMLAB/app_427357767312145"><img src="/assets/twitter.jpg" width="22" height="22" border="0" alt="Share to Twitter" /></a>
+		<a class="addthis_button_twitter" tw:text="<%= @art.description %>" tw:title="Check out these #TSNails! Vote for your favorite design in the @TadashiShoji Nail Art Challenge.http://www.facebook.com/LOOMLAB/app_427357767312145" tw:url="http://www.facebook.com/LOOMLAB/app_427357767312145"><img src="/assets/twitter.jpg" width="22" height="22" border="0" alt="Share to Twitter" /></a>
 		<a class="addthis_button_pinterest" pi:pinit:url="http://www.facebook.com/LOOMLAB/app_427357767312145" pi:pinit:media="http://frozen-thicket-2524.herokuapp.com/arts/<%= @art.filename %>"
-pi:pinit:description="<%= @art.description %>"></a>
+pi:pinit:description="Check out this design by <%= @art.blog %> for the Tadashi Shoji Nail Art Challenge #TSNails"></a>
 	</div>
 	<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 	<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4fceb155437252cd"></script>
