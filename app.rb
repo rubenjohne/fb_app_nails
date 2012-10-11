@@ -195,7 +195,7 @@ post '/vote' do
 end
 
 
-get '/official-rules'
+get '/official-rules' do
   erb :official_rules
 end
 
