@@ -33,6 +33,6 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
-	<div class="fb-comments" data-href="<%= env['REMOTE_HOST']%>" data-num-posts="2" 	data-width="470"></div>
-	
+	<div class="fb-comments" data-href="<%= env['HTTP_HOST'] + "/vote/" + @art.id %>" data-num-posts="2" 	data-width="470"></div>
+
 </section>	
