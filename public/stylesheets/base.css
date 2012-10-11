@@ -162,9 +162,18 @@ td {
  height: 382px;	
 }
 
-.fb-comments .fbFeedbackContent .postToProfile {
+#facebook-comments .fb-comments .fbFeedbackContent .postToProfile {
   display: none;
 }
+
+#facebook-comments .post {
+	
+}
+
+#facebook-comments #facebook {
+	
+}
+
 
 #vote a.uiLinkSubtle {
   color: gray;
