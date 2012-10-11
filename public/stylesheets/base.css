@@ -191,6 +191,10 @@ td {
 	width: 100px;
 	height: 35px;
 }
+
+#official-rules {
+	text-align: center;
+}
 /* ------------------------------------------ */
 
 /* =clearfix
