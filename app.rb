@@ -89,11 +89,11 @@ post "/" do
   signed_request = params[:signed_request]
   oauth = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"])
   @signed_request = oauth.parse_signed_request(signed_request)
-  @graph = Koala::Facebook::API.new
-  @user = @graph.get_object(@signed_request["user_id"])  
-  unless @user.nil? 
-    set :user_name, @user['username'] 
-  end
+  #@graph = Koala::Facebook::API.new
+  #@user = @graph.get_object(@signed_request["user_id"])  
+  #unless @user.nil? 
+  #  set :user_name, @user['username'] 
+  #end
   liked_page = @signed_request['page']['liked']
   if liked_page
     # this is the login information once they liked the page 
