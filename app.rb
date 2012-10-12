@@ -206,7 +206,7 @@ get '/official-rules' do
   erb :official_rules
 end
 
-get "/auth/facebook" do
+get '/auth/facebook' do
   session[:access_token] = nil
   redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 end
