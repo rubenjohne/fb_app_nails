@@ -70,6 +70,10 @@ DataMapper.auto_upgrade!
 
 helpers do
   include Sinatra::Authorization 
+  
+  def authenticator 
+    @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
+  end
 end
 
 # set utf-8 for outgoing
@@ -92,13 +96,17 @@ post "/" do
   end
   liked_page = @signed_request['page']['liked']
   if liked_page
-    @graph = Koala::Facebook::API.new
-    unless @signed_request['user_id'].nil?
-      @user_id = @signed_request['user_id']
-      @user = @graph.get_object(@user_id) 
+    # this is the login information once they liked the page 
+    @graph = Koala::Facebook::API.new(session[:access_token])
+  
+    # check if the user is actually logged in to be able to vote
+    if session[:access_token]
+      @user = @graph.get_objects("me")  
+      @arts = Art.all(:order => [:blog_id.asc])
+      erb :unlocked
+    else 
+      redirect "/auth/facebook"  
     end
-    @arts = Art.all(:order => [:blog_id.asc])
-    erb :unlocked
   else
     erb :locked 
   end  
@@ -194,9 +202,16 @@ post '/vote' do
    end
 end
 
-
 get '/official-rules' do
   erb :official_rules
 end
 
+get "/auth/facebook" do
+  session[:access_token] = nil
+  redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
+end
 
+get '/auth/facebook/callback' do
+  session[:access_token] = authenticator.get_access_token(params[:code])
+  redirect '/'
+end

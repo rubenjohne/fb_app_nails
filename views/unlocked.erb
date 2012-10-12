@@ -13,7 +13,7 @@
 	
 </nav>
 -->
-
+<% if @user %>
 <section id="nails" class="clearfix">
 <% @arts.each_with_index do |art,i| %>
 	<% trueIndex = i + 1 %>
@@ -45,3 +45,12 @@
 <div class="official-rules" class="clearfix">
 	<a href="/official-rules">Official Rules</a>
 </div>
+
+<% else %>
+<div>
+	<h1>Login to Vote!!!</h1>
+	<a href="/auth/facebok">
+		<span class="fb_button_text">Log In</span>
+	</a>	
+</div>
+<% end %>
