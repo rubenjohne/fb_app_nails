@@ -146,6 +146,8 @@ td {
 
 #voted a {
 	position:absolute;
+	right: 200px;
+	top: 370px;
 }
 
 #formSubscribe {
