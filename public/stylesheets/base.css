@@ -168,7 +168,9 @@ td {
 }
 
 #novote a {
-	
+  position: absolute;
+  right: 190px;
+  top: 330px;	
 }
 
 #facebook-comments .fb-comments .fbFeedbackContent .postToProfile {
