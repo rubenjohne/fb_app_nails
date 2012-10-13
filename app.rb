@@ -197,7 +197,7 @@ end
 post '/vote' do
   art = Art.get(params[:id])
   # check if the user voted already
-  vote = Vote.last(:ip_address => env["REMOTE_ADDR"])
+  vote = Vote.last(:ip_address => settings.user_name)
   unless vote.nil? 
      diff = Time.now.day - vote.created_at.to_time.day 
      if diff != 0 
