@@ -94,7 +94,7 @@ post "/" do
   #unless @user.nil? 
   #  set :user_name, @user['username'] 
   #end
-  liked_page = @signed_request['page']['liked']
+  liked_page = @signed_request['page']['liked'] ||= nil
   if liked_page
     # this is the login information once they liked the page 
     @graph = Koala::Facebook::API.new(session[:access_token])
