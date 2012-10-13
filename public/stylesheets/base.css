@@ -144,6 +144,9 @@ td {
 	text-align: center;
 }
 
+#voted a {
+	position:absolute;
+}
 
 #formSubscribe {
 	position: absolute;
@@ -160,6 +163,10 @@ td {
  background-image: url('/assets/header_sorry.jpg');	 
  width: 800px;
  height: 382px;	
+}
+
+#novote a {
+	
 }
 
 #facebook-comments .fb-comments .fbFeedbackContent .postToProfile {
