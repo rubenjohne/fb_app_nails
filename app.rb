@@ -102,6 +102,7 @@ post "/" do
     # check if the user is actually logged in to be able to vote
     if session[:access_token]
       @user = @graph.get_objects("me")  
+      set :user_name, @user['me']['username']
       @arts = Art.all(:order => [:blog_id.asc])
       erb :unlocked
     else 
@@ -113,8 +114,17 @@ post "/" do
 end
 
 get "/" do
-  @arts = Art.all(:order => [:blog_id.asc])
-  erb :unlocked  
+  @graph = Koala::Facebook::API.new(session[:access_token])
+
+  # check if the user is actually logged in to be able to vote
+  if session[:access_token]
+    @user = @graph.get_objects("me")  
+    set :user_name, @user['me']['username']
+    @arts = Art.all(:order => [:blog_id.asc])
+    erb :unlocked
+  else 
+    redirect "/auth/facebook"  
+  end
 end
 
 get '/list' do
@@ -189,7 +199,7 @@ post '/vote' do
   # check if the user voted already
   vote = Vote.last(:ip_address => env["REMOTE_ADDR"])
   unless vote.nil? 
-     diff = DateTime.now.day - vote.created_at.day 
+     diff = Time.now.day - vote.created_at.to_time.day 
      if diff != 0 
        art.votes.create(:ip_address => env["REMOTE_ADDR"], :voted_by => settings.user_name)
        erb :voted  
