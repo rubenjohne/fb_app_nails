@@ -114,6 +114,9 @@ post "/" do
 end
 
 get "/" do
+  
+  request.env.map { |e| e.to_s + "\n" }
+  
   @graph = Koala::Facebook::API.new(session[:access_token])
 
   # check if the user is actually logged in to be able to vote
