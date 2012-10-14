@@ -238,8 +238,7 @@ get '/auth/facebook/callback' do
     # Get public details of current application
     #@app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
     # top.location.href to redirect properly within the iframe
-    #@script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"
+  @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"
     #<script>window.top.location.href = "https://graph.facebook.com/oauth/authorize?client_id=#{APP_ID}&redirect_uri=#{APP_CANVAS_URL}&scope=#{*** add permissions here ***}";</script>|
-  @user = @graph.get_object(@signed_request["user_id"])
   erb :authenticated
 end
