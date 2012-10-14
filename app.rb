@@ -125,8 +125,8 @@ get "/" do
     set :user_name, @user['me']['username']
     @arts = Art.all(:order => [:blog_id.asc])
     erb :unlocked
-  else 
-    redirect "/auth/facebook"  
+  #else 
+  #  redirect "/auth/facebook"  
   end
 end
 
