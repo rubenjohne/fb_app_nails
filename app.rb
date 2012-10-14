@@ -99,7 +99,7 @@ end
 
 configure do
   set :user_name, "dummy"
-  set :script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"  
+  set :script_location, "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"  
 end
 
 post "/" do
