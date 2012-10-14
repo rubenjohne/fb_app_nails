@@ -214,5 +214,6 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  redirect '/'
+  @token = authenticator.get_access_token_info(params[:code])
+  erb :authenticated
 end
