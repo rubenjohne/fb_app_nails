@@ -69,8 +69,24 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 
 helpers do
-  include Sinatra::Authorization 
-  
+  include Sinatra::Authorization
+
+  def host
+    request.env['HTTP_HOST']
+  end
+
+  def scheme
+    request.scheme
+  end
+
+  def url_no_scheme(path = '')
+    "//#{host}#{path}"
+  end
+
+  def url(path = '')
+    "#{scheme}://#{host}#{path}"
+  end
+     
   def authenticator 
     @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
   end
@@ -104,6 +120,7 @@ end
 
 get "/" do
 
+  
   # check if the user is actually logged in to be able to vote
   if session[:access_token]
     # this is the login information once they liked the page 
@@ -214,6 +231,15 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  @token = authenticator.get_access_token_info(params[:code])
+  @signed_request = authenticator.parse_signed_request(params[:signed_request])
+  # Get base API Connection
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+  #if @graph.get_object(@signed_request["user_id"]).nil? 
+    # Get public details of current application
+    #@app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+    # top.location.href to redirect properly within the iframe
+    #@script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"
+    #<script>window.top.location.href = "https://graph.facebook.com/oauth/authorize?client_id=#{APP_ID}&redirect_uri=#{APP_CANVAS_URL}&scope=#{*** add permissions here ***}";</script>|
+  @user = @graph.get_object(@signed_request["user_id"])
   erb :authenticated
 end
