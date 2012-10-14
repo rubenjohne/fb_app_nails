@@ -99,6 +99,7 @@ end
 
 configure do
   set :user_name, "dummy"
+  set :script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"  
 end
 
 post "/" do
@@ -120,7 +121,6 @@ end
 
 get "/" do
 
-  
   # check if the user is actually logged in to be able to vote
   if session[:access_token]
     # this is the login information once they liked the page 
@@ -231,6 +231,6 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"
+  #@script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"
   redirect "/"
 end
