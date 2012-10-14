@@ -231,9 +231,9 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  @signed_request = authenticator.parse_signed_request(params[:signed_request])
+  #@signed_request = authenticator.parse_signed_request(params[:signed_request])
   # Get base API Connection
-  @graph  = Koala::Facebook::API.new(session[:access_token])
+  #@graph  = Koala::Facebook::API.new(session[:access_token])
   #if @graph.get_object(@signed_request["user_id"]).nil? 
     # Get public details of current application
     #@app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
