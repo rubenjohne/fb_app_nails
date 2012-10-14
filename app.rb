@@ -96,11 +96,12 @@ post "/" do
   #end
   liked_page = @signed_request['page']['liked'] ||= nil
   if liked_page
-    # this is the login information once they liked the page 
-    @graph = Koala::Facebook::API.new(session[:access_token])
   
     # check if the user is actually logged in to be able to vote
     if session[:access_token]
+      # this is the login information once they liked the page 
+      @graph = Koala::Facebook::API.new(session[:access_token])
+      
       @user = @graph.get_objects("me")  
       set :user_name, @user['me']['username']
       @arts = Art.all(:order => [:blog_id.asc])
@@ -117,16 +118,17 @@ get "/" do
   
   @request = request.env
     
-  @graph = Koala::Facebook::API.new(session[:access_token])
-
   # check if the user is actually logged in to be able to vote
   if session[:access_token]
+    # this is the login information once they liked the page 
+    @graph = Koala::Facebook::API.new(session[:access_token])
+    
     @user = @graph.get_objects("me")  
     set :user_name, @user['me']['username']
     @arts = Art.all(:order => [:blog_id.asc])
     erb :unlocked
-  #else 
-  #  redirect "/auth/facebook"  
+  else 
+    redirect "/auth/facebook"  
   end
 end
 
