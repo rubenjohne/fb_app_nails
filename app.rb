@@ -126,15 +126,12 @@ end
 
 get "/" do
   
-  @user_cookie = session[:id]
-  # => #<Koala::Facebook::OAuth:0x1017177b0 @app_id=#{your_app_id}, @app_secret=#{your_secret_code}>  
   @arts = Art.all(:order => [:blog_id.asc])
 
   # check if the user is actually logged in to be able to vote
   if session[:access_token]
     # this is the login information once they liked the page 
     @graph = Koala::Facebook::API.new(session[:access_token])
-    
     @user = @graph.get_objects("me")  
     set :user_name, @user['me']['username']
   end
