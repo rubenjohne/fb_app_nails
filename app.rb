@@ -242,7 +242,7 @@ get '/auth/facebook/callback' do
   if session[:access_token]
     redirect "/"    
   else 
-    @script_location = "<script>window.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=http://frozen-thicket-2524.herokuapp.com/';</script>"
+    @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=http://frozen-thicket-2524.herokuapp.com/';</script>"
     erb :authenticated
   end  
 end
