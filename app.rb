@@ -240,7 +240,7 @@ get '/auth/facebook/callback' do
   @graph = Koala::Facebook::API.new(session[:access_token])  
   @user = @graph.get_objects("me")  
   if @user.nil?
-    @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=http://frozen-thicket-2524.herokuapp.com/';</script>"
+    @script_location = "<script>window.top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=http://frozen-thicket-2524.herokuapp.com/';</script>"
     erb :authenticated
   else 
     redirect "/"
