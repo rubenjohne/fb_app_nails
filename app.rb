@@ -126,7 +126,7 @@ end
 
 get "/" do
 
-  
+  @arts = Art.all(:order => [:blog_id.asc])  
   # check if the user is actually logged in to be able to vote
   if session[:access_token]
     # this is the login information once they liked the page 
@@ -134,11 +134,9 @@ get "/" do
     
     @user = @graph.get_objects("me")  
     set :user_name, @user['me']['username']
-    @arts = Art.all(:order => [:blog_id.asc])
-    erb :unlocked
-  else 
-    redirect "/auth/facebook"  
   end
+  erb :unlocked
+  
 end
 
 get '/list' do
@@ -232,8 +230,7 @@ end
 
 get '/auth/facebook' do
   session[:access_token] = nil
-  @script_location = "<script>window.top.location='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=https://apps.facebook.com/nailartchallenge/';</script>"
-  erb :authenticated
+  redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 end
 
 get '/auth/facebook/callback' do
@@ -241,10 +238,10 @@ get '/auth/facebook/callback' do
   #@graph = Koala::Facebook::API.new(session[:access_token])  
   #@user = @graph.get_object("me")  
   #if session[:access_token]
-  #  redirect "/"    
+  #  
+  redirect "/"    
   #else 
-  #@script_location = "<script>window.top.location='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=http://frozen-thicket-2524.herokuapp.com/';</script>"
   #  @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=http://frozen-thicket-2524.herokuapp.com/';</script>"
-    erb :authenticated
+  #  erb :authenticated
   #end  
 end
