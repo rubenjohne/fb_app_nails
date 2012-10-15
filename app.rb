@@ -126,6 +126,8 @@ end
 
 get "/" do
 
+  @user_cookie = authenticator.get_user_info_from_cookies(cookies)
+  @user_from_cookie = authenticator.get_user_from_cookies(cookies)
   
   # check if the user is actually logged in to be able to vote
   if session[:access_token]
