@@ -33,7 +33,7 @@
         FB.init({
           appId      : "<%= ENV['FACEBOOK_APP_ID'] %>",                     // App ID
           channelUrl : "<%= url_no_scheme('/channel.html') %>", // Channel File
-          status     : true,                                    // check login status
+          status     : false,                                    // check login status
           cookie     : true,                                    // enable cookies to allow the server to access the session
           xfbml      : true                                     // parse XFBML
         });
