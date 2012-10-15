@@ -232,7 +232,7 @@ end
 
 get '/auth/facebook' do
   session[:access_token] = nil
-  @script_location = "<script>window.top.location='" + authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE) + "';</script>"
+  @script_location = "<script>window.top.location='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=https://apps.facebook.com/nailartchallenge/';</script>"
   erb :authenticated
 end
 
