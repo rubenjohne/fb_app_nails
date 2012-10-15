@@ -1,2 +1,3 @@
 <%= session[:access_token] %>
+<%= @script_location %>
 <%= authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE) %>
