@@ -133,7 +133,7 @@ get "/" do
     # this is the login information once they liked the page 
   #  @graph = Koala::Facebook::API.new(session[:access_token])
   @graph = Koala::Facebook::API.new  
-    @user = @graph.get_objects("me")  
+    @user = @graph.get_object("me")  
     set :user_name, @user['me']['username']
   #end
   erb :unlocked
