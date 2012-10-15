@@ -125,6 +125,12 @@ post "/" do
 end
 
 get "/" do
+  
+  @oauth = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"])
+  @user_info_cookies = @oauth.get_user_info_from_cookies(request.cookies)
+  @user_cookie = @oauth.get_user_from_cookies(request.cookies)
+  # => #<Koala::Facebook::OAuth:0x1017177b0 @app_id=#{your_app_id}, @app_secret=#{your_secret_code}>  
+  @arts = Art.all(:order => [:blog_id.asc])
 
   # check if the user is actually logged in to be able to vote
   if session[:access_token]
@@ -133,11 +139,8 @@ get "/" do
     
     @user = @graph.get_objects("me")  
     set :user_name, @user['me']['username']
-    @arts = Art.all(:order => [:blog_id.asc])
-    erb :unlocked
-  else 
-    redirect "/auth/facebook"  
   end
+  erb :unlocked
 end
 
 get '/list' do
