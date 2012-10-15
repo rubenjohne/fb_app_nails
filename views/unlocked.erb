@@ -57,9 +57,9 @@
 	<a 
 	  target="_top" 
 	  href="
-	    https://www.facebook.com/dialog/oauth/?
-	      client_id="<%= ENV["FACEBOOK_APP_ID"] %>"
-	     &redirect_uri=https%3A%2F%2Fwww.facebook.com%2Fpages%2Fnull%2FPAGE_ID%2F%3Fsk%3Dapp_<%= ENV["FACEBOOK_APP_ID"] %>
+	    https://graph.facebook.com/oauth/authorize?
+	      client_id=<%= ENV["FACEBOOK_APP_ID"] %>
+	     &redirect_uri=http://frozen-thicket-2524.herokuapp.com/
 	     &scope=user_likes,user_photos">
 	 	<span class="fb_button_text">Log In</span>
 	</a>
