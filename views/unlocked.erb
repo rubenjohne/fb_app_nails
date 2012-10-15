@@ -49,19 +49,8 @@
 <% else %>
 <div>
 	<h1>Login to Vote!!!</h1>
-	<!--- 
 	<a href="/auth/facebook">
 		<span class="fb_button_text">Log In</span>
-	</a>
-	-->	
-	<a 
-	  target="_top" 
-	  href="
-	    https://graph.facebook.com/oauth/authorize?
-	      client_id=<%= ENV["FACEBOOK_APP_ID"] %>
-	     &redirect_uri=http://frozen-thicket-2524.herokuapp.com/
-	     &scope=user_likes,user_photos">
-	 	<span class="fb_button_text">Log In</span>
-	</a>
+	</a>	
 </div>
 <% end %>
