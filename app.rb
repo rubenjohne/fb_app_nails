@@ -231,7 +231,12 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"
-    #<script>window.top.location.href = "https://graph.facebook.com/oauth/authorize?client_id=#{APP_ID}&redirect_uri=#{APP_CANVAS_URL}&scope=#{*** add permissions here ***}";</script>|
-  erb :authenticated
+  @graph = Koala::Facebook::API.new(session[:access_token])  
+  @user = @graph.get_objects("me")  
+  if @user.nil?
+    @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"
+    erb :authenticated
+  else 
+    redirect "/"
+  end  
 end
