@@ -93,10 +93,10 @@ helpers do
 end
 
 # the facebook session expired! reset ours and restart the process
-#error(Koala::Facebook::APIError) do
-#  session[:access_token] = nil
-#  redirect "/auth/facebook"
-#end
+error(Koala::Facebook::APIError) do
+  session[:access_token] = nil
+  redirect "/auth/facebook"
+end
 
 # set utf-8 for outgoing
 before do 
@@ -111,11 +111,11 @@ post "/" do
   #signed_request = params[:signed_request]
   #oauth = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"])
   @signed_request = authenticator.parse_signed_request(params[:signed_request])
-  #@graph = Koala::Facebook::API.new
-  #@user = @graph.get_object(@signed_request["user_id"])  
-  #unless @user.nil? 
-  #  set :user_name, @user['username'] 
-  #end
+  @graph = Koala::Facebook::API.new
+  @user = @graph.get_object(@signed_request["user_id"])  
+  unless @user.nil? 
+    set :user_name, @user['username'] 
+  end
   liked_page = @signed_request['page']['liked'] 
   if liked_page
     redirect "/"
@@ -126,15 +126,18 @@ end
 
 get "/" do
 
-  @arts = Art.all(:order => [:blog_id.asc])  
+  
   # check if the user is actually logged in to be able to vote
-  #if session[:access_token]
+  if session[:access_token]
     # this is the login information once they liked the page 
-  #  @graph = Koala::Facebook::API.new(session[:access_token])
-  @graph = Koala::Facebook::API.new  
-    @user = @graph.get_object("me")  
+    @graph = Koala::Facebook::API.new(session[:access_token])
+    
+    @user = @graph.get_objects("me")  
     set :user_name, @user['me']['username']
-  #end
+    @arts = Art.all(:order => [:blog_id.asc])
+  else 
+    redirect "/auth/facebook"  
+  end
   erb :unlocked
   
 end
