@@ -105,7 +105,6 @@ end
 
 configure do
   set :user_name, "dummy"
-  set :target_url, 
 end
 
 post "/" do
