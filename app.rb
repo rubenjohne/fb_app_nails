@@ -126,9 +126,7 @@ end
 
 get "/" do
   
-  @oauth = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"])
-  @user_info_cookies = @oauth.get_user_info_from_cookies(request.cookies)
-  @user_cookie = @oauth.get_user_from_cookies(request.cookies)
+  @user_cookie = session[:id]
   # => #<Koala::Facebook::OAuth:0x1017177b0 @app_id=#{your_app_id}, @app_secret=#{your_secret_code}>  
   @arts = Art.all(:order => [:blog_id.asc])
 
