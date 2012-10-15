@@ -105,6 +105,7 @@ end
 
 configure do
   set :user_name, "dummy"
+  set :target_url, 
 end
 
 post "/" do
@@ -128,13 +129,13 @@ get "/" do
 
   @arts = Art.all(:order => [:blog_id.asc])  
   # check if the user is actually logged in to be able to vote
-  if session[:access_token]
+  #if session[:access_token]
     # this is the login information once they liked the page 
-    @graph = Koala::Facebook::API.new(session[:access_token])
-    
+  #  @graph = Koala::Facebook::API.new(session[:access_token])
+  @graph = Koala::Facebook::API.new  
     @user = @graph.get_objects("me")  
     set :user_name, @user['me']['username']
-  end
+  #end
   erb :unlocked
   
 end
