@@ -9,8 +9,8 @@ require "./lib/authorization"
 require "date"
 
 enable :sessions
-set :raise_errors, true
-set :show_exceptions, true
+set :raise_errors, false
+set :show_exceptions, false
 
 # Scope defines what permissions that we are asking the user to grant.
 # In this example, we are asking for the ability to publish stories
@@ -90,6 +90,12 @@ helpers do
   def authenticator 
     @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
   end
+end
+
+# the facebook session expired! reset ours and restart the process
+error(Koala::Facebook::APIError) do
+  session[:access_token] = nil
+  redirect "/auth/facebook"
 end
 
 # set utf-8 for outgoing
