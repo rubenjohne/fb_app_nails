@@ -12,6 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   width: 800px;
   overflow-x: hidden;
+  margin: 0 auto;
 }
 
 header {
@@ -142,6 +143,7 @@ td {
 
 #voted {
 	text-align: center;
+	position: relative;
 }
 
 #voted a {
@@ -165,6 +167,7 @@ td {
  background-image: url('/assets/header_sorry.jpg');	 
  width: 800px;
  height: 382px;	
+ position:relative;
 }
 
 #novote a {
