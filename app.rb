@@ -126,7 +126,7 @@ end
 
 get "/" do
 
-  
+  @arts = Art.all(:order => [:blog_id.asc])  
   # check if the user is actually logged in to be able to vote
   if session[:access_token]
     # this is the login information once they liked the page 
@@ -134,9 +134,6 @@ get "/" do
     
     @user = @graph.get_objects("me")  
     set :user_name, @user['me']['username']
-    @arts = Art.all(:order => [:blog_id.asc])
-  else 
-    redirect "/auth/facebook"  
   end
   erb :unlocked
   
