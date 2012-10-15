@@ -231,7 +231,7 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=http://www.facebook.com/LOOMLAB/app_427357767312145';</script>"
+  @script_location = "<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + ENV["FACEBOOK_APP_ID"] + "&redirect_uri=" + url  + "';</script>"
     #<script>window.top.location.href = "https://graph.facebook.com/oauth/authorize?client_id=#{APP_ID}&redirect_uri=#{APP_CANVAS_URL}&scope=#{*** add permissions here ***}";</script>|
   erb :authenticated
 end
