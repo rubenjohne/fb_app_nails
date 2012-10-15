@@ -18,7 +18,7 @@
 	
     <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
 
-	<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + <%= ENV["FACEBOOK_APP_ID"] %> + "&redirect_uri=" + <%= url %> + "';</script>"
+	<script>top.location.href='https://graph.facebook.com/oauth/authorize?client_id=" + <%= ENV["FACEBOOK_APP_ID"] %> + "&redirect_uri=" + <%= app.url %> + "';</script>"
 	
     <!--[if IE]>
       <script type="text/javascript">
