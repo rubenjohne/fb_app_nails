@@ -29,9 +29,15 @@ header {
 }
 
 #login_link {
+ top: 320px;
+ right: 200px;
+ color: #fff;	
  position:absolute;	
 }
 
+#login_link:hover {
+ color:#41C7BB;	
+}
 nav {
 	width:800px;
 }
