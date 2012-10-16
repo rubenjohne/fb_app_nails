@@ -26,6 +26,14 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
+before do
+  # HTTPS redirect
+  if settings.environment == :production && request.scheme != 'https'
+    redirect "https://#{request.env['HTTP_HOST']}"
+  end
+end
+
+
 # database connection from heroku
 DataMapper.setup(:default, ENV["DATABASE_URL"])
 
