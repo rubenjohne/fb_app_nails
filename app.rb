@@ -149,7 +149,7 @@ end
 get '/list' do
   require_admin
   @title = "List Arts"
-  @arts = Art.all(:order => [:votes.count.desc])
+  @arts = Art.all(:order => [:blog_id.asc])
   erb :list
 end
 
