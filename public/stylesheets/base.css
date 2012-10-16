@@ -21,6 +21,17 @@ header {
  width: 800px;
 }
 
+#login_first {
+ background-image: url('/assets/header_vote.jpg');	 
+ height: 382px;
+ width: 800px; 	
+ position: relative;
+}
+
+#login_link {
+ position:absolute;	
+}
+
 nav {
 	width:800px;
 }
