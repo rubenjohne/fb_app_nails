@@ -14,12 +14,13 @@
 	<img class="nail" src="/arts/big/<%= @art.filename %>" />
 	<p class="description"><%= @art.description %></p>
 	<p><span class="name">- <%= @art.blogger %>,</span> <span class="link"><a href="<%= @art.blog_url %>" target="_blank"><%= @art.blog %></a></span></p>
-		
+	
+	<!--- deactivate voting button to not allow vote	
 	<form action="/vote" method="post" id="vote_form">
 		<input type="hidden" name="id" value="<%= @art.id %>" />
 		<input class="button-submit" type="submit" value="VOTE FOR THIS DESIGN" />
 	</form>		
-	
+	-->
 	
 </section>	
 
