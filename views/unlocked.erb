@@ -60,13 +60,12 @@
 <div id="tabs">
 
     <ul>
-        <li><a href="#winner">Winner</a></li>
-        <li><a href="#nails">Entries</a></li>
+        <li><a href="#winner">WINNER</a></li>
+        <li><a href="#nails">ENTRIES</a></li>
 
 	</ul>
 	
 	<section id="winner" class="clearfix">
-		<img class="title" src="/arts/headers/<%= @art.filename %>" />	
 		<img class="nail" src="/arts/big/<%= @art.filename %>" />
 		<p class="description"><%= @art.description %></p>
 		<p><span class="name">- <%= @art.blogger %>,</span> <span class="link"><a href="<%= @art.blog_url %>" target="_blank"><%= @art.blog %></a></span></p>
