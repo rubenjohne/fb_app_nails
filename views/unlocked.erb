@@ -47,36 +47,61 @@
 
 
 <% if @user %>
+<script>
+	$(function() {
+	   $( "#tabs" ).tabs();
+	});
+</script>
+
 <header class="clearfix">
 	
 </header>
-<section id="nails" class="clearfix">
-<% @arts.each_with_index do |art,i| %>
-	<% trueIndex = i + 1 %>
 
-	<% if trueIndex == 1 %>
-		<ul>
-			<li>
-				<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
-			</li>	
-	<% elsif trueIndex == @arts.size %>		
-			<li>
-				<img src="/arts/<%= art.filename %>" />
-			</li>	
-		</ul>	
-	<% elsif (trueIndex % 3) == 0 %>	
-			<li>
-				<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
-			</li>	
-		</ul>	
-		<ul>
-	<% else %>		
-			<li>
-				<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
-			</li>	
-	<% end %>		
-<% end %>
-</section>
+<div id="tabs">
+
+    <ul>
+        <li><a href="#winner">Winner</a></li>
+        <li><a href="#nails">Entries</a></li>
+
+	</ul>
+	
+	<section id="winner" class="clearfix">
+		<img class="title" src="/arts/headers/<%= @art.filename %>" />	
+		<img class="nail" src="/arts/big/<%= @art.filename %>" />
+		<p class="description"><%= @art.description %></p>
+		<p><span class="name">- <%= @art.blogger %>,</span> <span class="link"><a href="<%= @art.blog_url %>" target="_blank"><%= @art.blog %></a></span></p>
+	</section>	
+	
+
+	<section id="nails" class="clearfix">
+	<% @arts.each_with_index do |art,i| %>
+		<% trueIndex = i + 1 %>
+
+		<% if trueIndex == 1 %>
+			<ul>
+				<li>
+					<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
+				</li>	
+		<% elsif trueIndex == @arts.size %>		
+				<li>
+					<img src="/arts/<%= art.filename %>" />
+				</li>	
+			</ul>	
+		<% elsif (trueIndex % 3) == 0 %>	
+				<li>
+					<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
+				</li>	
+			</ul>	
+			<ul>
+		<% else %>		
+				<li>
+					<a href="/vote/<%= art.id %>"><img src="/arts/<%= art.filename %>" /></a>
+				</li>	
+		<% end %>		
+	<% end %>
+	</section>
+
+</div>
 
 <div class="official-rules" class="clearfix">
 	<a href="/official-rules">Official Rules</a>

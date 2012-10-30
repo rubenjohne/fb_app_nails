@@ -16,13 +16,13 @@ body {
 }
 
 header {
- background-image: url('/assets/header.jpg');	 
+ background-image: url('/assets/HeaderWinner_Announced.jpg');	 
  height: 382px;
  width: 800px;
 }
 
 #login_first {
- background-image: url('/assets/header_vote.jpg');	 
+ background-image: url('/assets/header_vote_end.jpg');	 
  height: 382px;
  width: 800px; 	
  position: relative;
@@ -150,6 +150,25 @@ td {
 
 #vote form {
 	margin: 8px 0;
+}
+
+#winner {
+	text-align: center;
+	margin-top: 5px;
+}
+
+#winner .title {
+	
+}
+
+#winner .nail {
+	margin: -6px 0 5px 0;
+}
+
+#winner .description {
+	font-size: 14px;
+	padding: 0 55px;
+	margin-bottom: 5px;
 }
 
 

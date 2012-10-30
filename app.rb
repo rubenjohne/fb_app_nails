@@ -133,7 +133,9 @@ post "/" do
 end
 
 get "/" do
-  
+  # get the winner
+  @art = Art.get(5)
+  # get all entries
   @arts = Art.all(:order => [:blog_id.asc])
 
   # check if the user is actually logged in to be able to vote
