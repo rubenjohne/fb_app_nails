@@ -65,14 +65,14 @@
 
 	</ul>
 	
-	<section id="winner" class="clearfix">
+	<div id="winner" class="clearfix">
 		<img class="nail" src="/arts/big/<%= @art.filename %>" />
 		<p class="description"><%= @art.description %></p>
 		<p><span class="name">- <%= @art.blogger %>,</span> <span class="link"><a href="<%= @art.blog_url %>" target="_blank"><%= @art.blog %></a></span></p>
-	</section>	
+	</div>	
 	
 
-	<section id="nails" class="clearfix">
+	<div id="nails" class="clearfix">
 	<% @arts.each_with_index do |art,i| %>
 		<% trueIndex = i + 1 %>
 
@@ -98,7 +98,7 @@
 				</li>	
 		<% end %>		
 	<% end %>
-	</section>
+	</div>
 
 </div>
 
